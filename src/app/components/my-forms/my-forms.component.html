@@ -1,0 +1,27 @@
+<table  class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">cihaz ismi</th>
+        <th scope="col">Arıza durumu</th>
+        <th scope="col">Telefon numarası</th>
+        <th scope="col">Arıza açıklaması</th>
+        <th scope="col">Arıza kodu</th>
+        <th scope="col">Arıza tarihi</th>
+        <th scope="col">Kullanıcı id</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let _form of form ">
+        <th>{{ _form.id }}</th>
+        <td>{{ _form.deviceName | uppercase }}</td>
+        <td>{{ _form.formStatus | status }}</td>
+        <td>{{ _form.phoneNumber }}</td>
+        <td>{{ _form.formDesc }}</td>
+        <td>{{ _form.formCode }}</td>
+        <td>{{ _form.formDate | date }}</td>
+        <td>{{ _form.userId }}</td>   
+      </tr>
+    </tbody>
+  </table>

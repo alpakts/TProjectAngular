@@ -1,0 +1,7 @@
+
+<ul  class="list-group">
+    <li (click)="currentStatus" routerLink="/forms" [class]="getAllForms()">Tüm Formlar</li>
+</ul>
+<ul  class="list-group">
+    <li (click)="setCurrentStatus(form)" routerLink="/forms/status/{{form.id}}" *ngFor="let form of formStatus"[class]="getCurrentStatus(form)">{{form.statusName}} Formlar</li>
+</ul>

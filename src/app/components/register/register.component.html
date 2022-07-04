@@ -1,0 +1,66 @@
+<body>
+  <form [formGroup]="registerForm">
+    <div class="container">
+      <h1>Kayıt ol</h1>
+      <p>Kayıt olmak için lütfen formu doldurun.</p>
+      <hr />
+
+      <label for="email"><b>E-mail</b></label>
+      <input
+        type="text"
+        placeholder="Email giriniz "
+        name="email"
+        id="email"
+        formControlName="email"
+        required
+      />
+
+      <label for="psw"><b>Şifre</b></label>
+      <input
+        type="password"
+        placeholder="Şifrenizi giriniz"
+        name="psw"
+        formControlName="password"
+        id="psw"
+        required
+      />
+
+
+      <label for="psw-repeat"><b>Ad</b></label>
+      <input
+        type="text"
+        placeholder="Adınızı Giriniz"
+        name="psw-repeat"
+        
+        formControlName="firstName"
+        
+        required
+      />
+      <label for="psw-repeat"><b>Soyad</b></label>
+      <input
+        type="text"
+        placeholder="Soyadınızı giriniz"
+        name="psw-repeat"
+        
+        formControlName="lastName"
+        required
+      />
+      <input readonly hidden
+        type="number"
+        name="psw-repeat"
+        value="asds"
+        formControlName="formId"
+        
+        required
+      />
+      <hr />
+
+
+      <button (click)="register()"  class="registerbtn">Tamamla</button>
+    </div>
+
+    <div class="container signin">
+      <p>Zaten kayıtlımısınız <a href="#">Giriş yap</a>.</p>
+    </div>
+  </form>
+</body>

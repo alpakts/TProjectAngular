@@ -1,0 +1,161 @@
+ <div class="row">
+    <div class="col-md-8">
+        <div *ngIf="dataLoaded == false" class="text-center">
+            <div class="spinner-grow text-primary" role="status">
+              <span class="sr-only"></span>
+            </div>
+            <div class="spinner-grow text-secondary" role="status">
+              <span class="sr-only"></span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+              <span class="sr-only"></span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+              <span class="sr-only"></span>
+            </div>
+            <div class="spinner-grow text-warning" role="status">
+              <span class="sr-only"></span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+              <span class="sr-only"></span>
+            </div>
+            <div class="spinner-grow text-light-blue" role="status">
+              <span class="sr-only"></span>
+            </div>
+            <div class="spinner-grow text-dark" role="status">
+              <span class="sr-only"></span>
+            </div>
+          </div>
+          
+          <table *ngIf="dataLoaded == true"  class="table table-striped">
+            <thead>
+              <tr >
+                <th scope="col">#</th>
+                <th scope="col">Kullanıcı Id</th>
+                <th scope="col">Kulanıcı Rolü</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let _role of role ">
+                <th>{{ _role.id }}</th>
+                <td>{{ _role.userId }}</td>
+                <td>{{ _role.operationClaimId |role }}</td>
+                <td>
+                  <div class="flex">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#exampleModal1"
+                    >
+                      güncelle
+                    </button>
+                  </div>
+          
+                  <!-- Modal -->
+                  <div
+                    class="modal fade"
+                    id="exampleModal1"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">
+                            Güncellenecek olan arızanın bilgilerini giriniz
+                          </h5>
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form [formGroup]="roleForm">
+                            <div class="mb-3">
+                              <input
+                                placeholder="id"
+                                type="number"
+                                name="deviceName"
+                                id="deviceName"
+                                formControlName="id"
+                                class="form-control"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <input
+                                placeholder="Cihaz markası"
+                                type="text"
+                                name="deviceName"
+                                id="deviceName"
+                                formControlName="userId"
+                                class="form-control"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <input
+                                placeholder="Form Açıklaması"
+                                type="text"
+                                name="formDesc"
+                                id="formDesc"
+                                formControlName="operationClaimId"
+                                class="form-control"
+                              />
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            iptal et
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-dismiss="modal"
+                            (click)="update(_role)"
+                          >
+                            Değişiklikleri kaydet
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td> <button (click)="delete(_role)" class="btn btn-danger"> Sil</button></td>
+              </tr>
+            </tbody>
+          </table> 
+        </div>
+    <div class="col-md-4">
+        <form [formGroup]="roleForm">
+          <input hidden type="text" formControlName="id" value="">
+            <h2>Rol Ekle</h2>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Kullanıcı Id</label>
+              <input type="number" class="form-control" formControlName="userId" id="exampleInputEmail1"  >
+            </div>
+              <label for="ara"> Rol </label>
+
+              <select class="form-select form-select-sm" id="ara" formControlName="operationClaimId" aria-label=".form-select-sm example">
+                 
+                <option value=1>Kulanıcı</option>
+                <option value=2>Operatör</option>
+                <option value=3>Admin</option>
+              </select>
+
+            <button type="submit" (click)="add()" class="btn btn-success">Ekle</button>
+          </form>
+    </div>
+  
+</div>
+  

@@ -1,0 +1,187 @@
+
+<!-- Modal -->
+
+<div class="form-group">
+    <label for="exampleInputEmail1" class="text-center"> Email İle Kullanıcı Ara</label>
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      class="form-control"
+      id="filterText"
+      placeholder="arama ifadesi giriniz"
+    />
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+  
+  <div *ngIf="filterText.length > 2" class="alert alert-success">
+    {{ filterText }} aradınız
+  </div>
+  <div *ngIf="dataLoaded == false" class="text-center">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="sr-only"></span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status">
+      <span class="sr-only"></span>
+    </div>
+    <div class="spinner-grow text-success" role="status">
+      <span class="sr-only"></span>
+    </div>
+    <div class="spinner-grow text-danger" role="status">
+      <span class="sr-only"></span>
+    </div>
+    <div class="spinner-grow text-warning" role="status">
+      <span class="sr-only"></span>
+    </div>
+    <div class="spinner-grow text-info" role="status">
+      <span class="sr-only"></span>
+    </div>
+    <div class="spinner-grow text-light-blue" role="status">
+      <span class="sr-only"></span>
+    </div>
+    <div class="spinner-grow text-dark" role="status">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+  
+  <table *ngIf="dataLoaded== true" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Ad Soyad</th>
+        <th scope="col">Email</th>
+        <th scope="col">FormId</th>
+       
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let _user of user | email : filterText" >
+        <th>{{ _user.id }}</th>
+        <td>{{ _user.firstName+" "+_user.lastName | uppercase}}</td>
+        <td>{{ _user.email }}</td>
+        <td>{{ _user.formId }}</td>
+     
+        <td>
+          <div class="flex">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              güncelle
+            </button>
+          </div>
+
+  
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Güncellenecek olan kullanıcının bilgilerini giriniz</h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="userForm" >
+                    
+                    <div class="mb-3">
+          
+                      <input 
+                      placeholder="güncellenecek kullanıcının id'sini giriniz"                  
+                        type="number"
+                        name="id"
+                        id="id"
+                        formControlName="id"
+                        class="form-control"
+                      />
+                      </div>
+                    <div class="mb-3">
+          
+                      <input
+                        placeholder=Ad
+                        
+                        type="text"
+                        name="firstName"
+                        id="firstName"
+                        formControlName="firstName"
+                        class="form-control"
+                      />
+                      </div>
+                    <div class="mb-3">
+          
+                    <input
+                      placeholder="Soyad"
+                      type="text"
+                      name="lastName"
+                      id="lastName"
+                      formControlName="lastName"
+                      class="form-control"
+                    />
+                    </div>
+                    <div class="mb-3">
+                      <input email="data-target"
+                      placeholder="E-mail"
+                      type="text"
+                      name="email"
+                      id="email"
+                      formControlName="email"
+                      class="form-control"
+                    />
+                    </div>
+          
+                    <div class="mb-3">
+                      <input
+                      placeholder="Form Id"
+                      type="number"
+                      name="formId"
+                      id="formId"
+                      formControlName="formId"
+                      class="form-control"
+                    />
+                    </div>
+                  </form>
+  
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    iptal et
+                  </button>
+                  <button type="button" (click)="updateUser(_user)" class="btn btn-primary" data-dismiss="modal" >
+                    Değişiklikleri kaydet
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="flex">
+            <button  (click)="deleteUser(_user)" class="btn btn-danger mx-2">
+              Sil
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="app-users"></div>
+  

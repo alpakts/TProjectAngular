@@ -1,0 +1,43 @@
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://b2b.timo-tech.com/Storage/Products/IW1Blfej9D.png" alt="..." height="36">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="" aria-current="page" href="#">Anasayfa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="forms/formadd" href="#">Arıza Bildir</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="item==1" routerLink="user" href="#">Kullanıcıları listele</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="item==3" routerLink="login" href="#">Giriş yap</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="item!=3"  (click)="logOut()" href="#">çıkış yap</a>
+          </li>
+          <li class="nav-item dropdown" routerLink="myforms" >
+            <a *ngIf="item!=3" class="nav-link "  id="navbarDropdown" role="button" >
+              Formlarım
+            </a>
+            
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div>
+<br>
+<br>
+</div>
+
+  

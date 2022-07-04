@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+body, html {
+    height: 100%;
+  }
+  
+  .bg { 
+    /* The image used */
+    background-image: url("C:\Users\alper-aktas\Desktop\7443a31b6a19e5630b94a6538ff9bdd1.gif");
+  
+    /* Full height */
+    height: 100%; 
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
